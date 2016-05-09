@@ -1,0 +1,28 @@
+#######################################
+# Syntax Coloring Map For Gamepad
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Gamepad	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin			KEYWORD2
+setXAxis		KEYWORD2
+getXAxis		KEYWORD2
+setYAxis		KEYWORD2
+getYAxis		KEYWORD2
+setButton		KEYWORD2
+getButton		KEYWORD2
+pressButton		KEYWORD2
+releaseButton	KEYWORD2
+sendState		KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
