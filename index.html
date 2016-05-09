@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FURiOUS - SNES Input Viewer</title>
+	<script type="text/javascript" src="//code.jquery.com/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			var controller = ['b', 'y', 'select', 'start', 'a', 'x', 'l', 'r'];
+			var rAF = window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.requestAnimationFrame;
+			function updateGamepad(){
+				var gamepad = ("getGamepads" in navigator) ? navigator.getGamepads()[0] : navigator.webkitGetGamepads()[0];
+				if(gamepad){
+					for(button in gamepad.buttons)
+						$('button#' + controller[button]).toggle(gamepad.buttons[button].pressed || gamepad.buttons[button] == 1);
+
+					$('button#left').toggle(gamepad.axes[0] < 0);
+					$('button#right').toggle(gamepad.axes[0] > 0);
+					$('button#up').toggle(gamepad.axes[1] < 0);
+					$('button#down').toggle(gamepad.axes[1] > 0);
+				}
+
+				var start = rAF(updateGamepad);
+			}
+
+			updateGamepad();
+		});
+	</script>
+	<style type="text/css">
+		body * { box-sizing: border-box; }
+		body, html {
+			font-family: Tahoma;
+			padding: 0; margin: 0;
+		}
+		#controller {
+			background: url('images/controller.png') no-repeat;
+			width: 536px; height: 234px;
+			position: relative;
+
+		}
+
+		button {
+			display: none;
+			position: absolute;
+			background: no-repeat;
+			border: none; padding: 0;
+			transform: translate(-56px,-94px);
+		}
+
+		#a, #b, #x, #y {
+			width: 44px; height: 44px;
+			background-image: url('images/button.png');
+		}
+
+		#a { top: 190px; left: 505px; }
+		#b { top: 230px; left: 455px; }
+		#x { top: 150px; left: 455px; }
+		#y { top: 190px; left: 405px; }
+
+		#up, #down, #left, #right { width: 19px; height: 19px; }
+		#up {
+			background-image: url('images/up.png');
+			top: 175px; left: 163px;
+		}
+		#down {
+			background-image: url('images/down.png');
+			top: 235px; left: 163px;
+		}
+		#left {
+			background-image: url('images/left.png');
+			top: 205px; left: 130px;
+		}
+		#right {
+			background-image: url('images/right.png');
+			top: 205px; left: 191px;
+		}
+
+		#start, #select {
+			width: 46px; height: 40px; top: 209px;
+			background-image: url('images/ss.png');
+		}
+		#start { left: 310px; }
+		#select { left: 255px; }
+
+		#l, #r {
+			width: 120px; height: 17px; top: 95px; 
+		}
+		#l { background-image: url('images/l.png'); left: 122px; }
+		#r { background-image: url('images/r.png'); left: 407px; }
+
+	</style>
+</head>
+<body>
+	<div id="controller">
+		<button id="up"></button>
+		<button id="down"></button>
+		<button id="left"></button>
+		<button id="right"></button>
+		<button id="select"></button>
+		<button id="start"></button>
+		<button id="l"></button>
+		<button id="r"></button>
+		<button id="b"></button>
+		<button id="a"></button>
+		<button id="y"></button>
+		<button id="x"></button>
+	</div>
+</body>
+</html>
