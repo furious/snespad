@@ -2,7 +2,6 @@
  * SNES Input Viewer & Gamepad
  * Developer: FURiOUS <furious.pro>
  * Version: 2.0
- * License: http://creativecommons.org/licenses/by-sa/3.0/legalcode
  * 
  * This firmware makes an arduino board intercept controller signals from a SNES console.
  */
